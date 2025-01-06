@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "jKmRDof6SlrcBT8rOABFQ8v5Prvay69aT8fXGIzpNNc=",
+  "Source": "FaiseStock.API",
+  "BasePath": "_content/FaiseStock.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

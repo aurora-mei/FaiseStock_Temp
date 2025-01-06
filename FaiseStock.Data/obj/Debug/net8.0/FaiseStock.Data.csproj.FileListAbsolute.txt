@@ -1,0 +1,14 @@
+D:\rider_csharp-code\FaiseStock\FaiseStock.Data\bin\Debug\net8.0\FaiseStock.Data.deps.json
+D:\rider_csharp-code\FaiseStock\FaiseStock.Data\bin\Debug\net8.0\FaiseStock.Data.runtimeconfig.json
+D:\rider_csharp-code\FaiseStock\FaiseStock.Data\bin\Debug\net8.0\FaiseStock.Data.dll
+D:\rider_csharp-code\FaiseStock\FaiseStock.Data\bin\Debug\net8.0\FaiseStock.Data.pdb
+D:\rider_csharp-code\FaiseStock\FaiseStock.Data\obj\Debug\net8.0\FaiseStock.Data.csproj.AssemblyReference.cache
+D:\rider_csharp-code\FaiseStock\FaiseStock.Data\obj\Debug\net8.0\FaiseStock.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\rider_csharp-code\FaiseStock\FaiseStock.Data\obj\Debug\net8.0\FaiseStock.Data.AssemblyInfoInputs.cache
+D:\rider_csharp-code\FaiseStock\FaiseStock.Data\obj\Debug\net8.0\FaiseStock.Data.AssemblyInfo.cs
+D:\rider_csharp-code\FaiseStock\FaiseStock.Data\obj\Debug\net8.0\FaiseStock.Data.csproj.CoreCompileInputs.cache
+D:\rider_csharp-code\FaiseStock\FaiseStock.Data\obj\Debug\net8.0\FaiseStock.Data.dll
+D:\rider_csharp-code\FaiseStock\FaiseStock.Data\obj\Debug\net8.0\refint\FaiseStock.Data.dll
+D:\rider_csharp-code\FaiseStock\FaiseStock.Data\obj\Debug\net8.0\FaiseStock.Data.pdb
+D:\rider_csharp-code\FaiseStock\FaiseStock.Data\obj\Debug\net8.0\FaiseStock.Data.genruntimeconfig.cache
+D:\rider_csharp-code\FaiseStock\FaiseStock.Data\obj\Debug\net8.0\ref\FaiseStock.Data.dll

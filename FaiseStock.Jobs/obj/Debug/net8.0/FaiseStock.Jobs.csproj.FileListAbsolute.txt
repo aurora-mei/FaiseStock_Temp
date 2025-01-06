@@ -1,0 +1,15 @@
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\bin\Debug\net8.0\FaiseStock.Jobs.deps.json
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\bin\Debug\net8.0\FaiseStock.Jobs.dll
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\bin\Debug\net8.0\FaiseStock.Jobs.pdb
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\bin\Debug\net8.0\FaiseStock.Data.dll
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\bin\Debug\net8.0\FaiseStock.Data.pdb
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\obj\Debug\net8.0\FaiseStock.Jobs.csproj.AssemblyReference.cache
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\obj\Debug\net8.0\FaiseStock.Jobs.GeneratedMSBuildEditorConfig.editorconfig
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\obj\Debug\net8.0\FaiseStock.Jobs.AssemblyInfoInputs.cache
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\obj\Debug\net8.0\FaiseStock.Jobs.AssemblyInfo.cs
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\obj\Debug\net8.0\FaiseStock.Jobs.csproj.CoreCompileInputs.cache
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\obj\Debug\net8.0\FaiseSto.8A386C75.Up2Date
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\obj\Debug\net8.0\FaiseStock.Jobs.dll
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\obj\Debug\net8.0\refint\FaiseStock.Jobs.dll
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\obj\Debug\net8.0\FaiseStock.Jobs.pdb
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\obj\Debug\net8.0\ref\FaiseStock.Jobs.dll

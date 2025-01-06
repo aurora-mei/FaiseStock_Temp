@@ -1,0 +1,8 @@
+API project cài:
+Microsoft.EntityFrameworkCore.Design
+
+Data project cài:
+Microsoft.EntityFrameworkCore.Tools
+
+API project reference:
+Data project

@@ -1,0 +1,6 @@
+@FaiseStock.API_HostAddress = http://localhost:5055
+
+GET {{FaiseStock.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
