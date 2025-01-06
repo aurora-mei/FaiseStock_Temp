@@ -24,11 +24,11 @@ namespace FaiseStock.Data.Repositories
         }
         public async Task<List<TopUser>> GetRankAsync(DateOnly keydate)
         {
-            return await _context.TopUsers.Include(x => x.User).Where(x => x.CreateAt.Day.Equals(keydate.Day)).ToListAsync();
+            return await _context.TopUsers.Include(x => x.User).Where(x => x.CreateAt.Day.Equals(keydate.Day)).OrderBy(x => x.Rank).ToListAsync();
         }
         public async Task<List<TopUser>> GetRankAsync()
         {
-            return await _context.TopUsers.Include(x=>x.User).ToListAsync();
+            return await _context.TopUsers.Include(x=>x.User).OrderBy(x => x.Rank).ToListAsync();
         }
         public async Task GenerateRankAsync()
         {
@@ -78,7 +78,7 @@ namespace FaiseStock.Data.Repositories
                 Rank = rank,
                 IncreasedAmount = increasedAmount,
                 Roic = ROIC,
-                CreateAt = DateTime.Now
+                CreateAt = DateOnly.FromDateTime(DateTime.Now)
             };
             await _context.TopUsers.AddAsync(topUser);
             await _context.SaveChangesAsync();
