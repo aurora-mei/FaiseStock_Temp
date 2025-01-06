@@ -12,3 +12,4 @@ D:\rider_csharp-code\FaiseStock\FaiseStock.Data\obj\Debug\net8.0\refint\FaiseSto
 D:\rider_csharp-code\FaiseStock\FaiseStock.Data\obj\Debug\net8.0\FaiseStock.Data.pdb
 D:\rider_csharp-code\FaiseStock\FaiseStock.Data\obj\Debug\net8.0\FaiseStock.Data.genruntimeconfig.cache
 D:\rider_csharp-code\FaiseStock\FaiseStock.Data\obj\Debug\net8.0\ref\FaiseStock.Data.dll
+D:\rider_csharp-code\FaiseStock\FaiseStock.Data\obj\Debug\net8.0\FaiseStock.Data.sourcelink.json

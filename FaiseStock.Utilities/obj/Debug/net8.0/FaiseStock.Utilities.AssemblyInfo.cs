@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FaiseStock.Utilities")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abe814fa6a899c0628a49458330d2fb757760ff3")]
 [assembly: System.Reflection.AssemblyProductAttribute("FaiseStock.Utilities")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FaiseStock.Utilities")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

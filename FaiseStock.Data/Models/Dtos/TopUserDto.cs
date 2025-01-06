@@ -10,7 +10,7 @@ namespace FaiseStock.Data.Models.Dtos
     {
         public string UserId { get; set; } = null!;
 
-        public DateTime CreateAt { get; set; }
+        public DateOnly CreateAt { get; set; }
 
         public int Rank { get; set; }
 

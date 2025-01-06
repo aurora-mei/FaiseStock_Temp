@@ -13,3 +13,4 @@ D:\rider_csharp-code\FaiseStock\FaiseStock.Utilities\obj\Debug\net8.0\ref\FaiseS
 D:\rider_csharp-code\FaiseStock\FaiseStock.Utilities\bin\Debug\net8.0\FaiseStock.Data.dll
 D:\rider_csharp-code\FaiseStock\FaiseStock.Utilities\bin\Debug\net8.0\FaiseStock.Data.pdb
 D:\rider_csharp-code\FaiseStock\FaiseStock.Utilities\obj\Debug\net8.0\FaiseSto.3A1413B3.Up2Date
+D:\rider_csharp-code\FaiseStock\FaiseStock.Utilities\obj\Debug\net8.0\FaiseStock.Utilities.sourcelink.json
