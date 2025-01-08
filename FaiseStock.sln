@@ -14,7 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FaiseStock.Utilities", "FaiseStock.Utilities\FaiseStock.Utilities.csproj", "{6FB003B0-8B63-4A5D-804A-72B68B2E2496}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaiseStock.Jobs", "FaiseStock.Jobs\FaiseStock.Jobs.csproj", "{034B4BE8-DDD6-4F8F-B55E-4A352F46003F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FaiseStock.Jobs", "FaiseStock.Jobs\FaiseStock.Jobs.csproj", "{034B4BE8-DDD6-4F8F-B55E-4A352F46003F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaiseStock.Middlewares", "FaiseStock.Middlewares\FaiseStock.Middlewares.csproj", "{96947749-9BDA-4E8B-8024-7129BF8125A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{034B4BE8-DDD6-4F8F-B55E-4A352F46003F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{034B4BE8-DDD6-4F8F-B55E-4A352F46003F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{034B4BE8-DDD6-4F8F-B55E-4A352F46003F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96947749-9BDA-4E8B-8024-7129BF8125A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96947749-9BDA-4E8B-8024-7129BF8125A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96947749-9BDA-4E8B-8024-7129BF8125A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96947749-9BDA-4E8B-8024-7129BF8125A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

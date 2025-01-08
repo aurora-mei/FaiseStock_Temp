@@ -9,6 +9,7 @@ using Quartz.Impl;
 using Quartz.Spi;
 using Quartz;
 using FaiseStock.Jobs;
+using FaiseStock.Middlewares;
 
 namespace FaiseStock.API
 {
@@ -71,7 +72,7 @@ namespace FaiseStock.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
             app.UseHttpsRedirection();
 
             app.UseAuthorization();

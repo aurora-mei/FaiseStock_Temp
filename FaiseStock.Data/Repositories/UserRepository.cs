@@ -32,6 +32,7 @@ namespace FaiseStock.Data.Repositories
         }
         public async Task GenerateRankAsync()
         {
+            //ClearRank();
             var list = await _context.Wallets.Include(x => x.User).ThenInclude(x => x.DepositHistories).ToListAsync();
 
             var result = new List<(string UserId, double IncreasedAmount, double ROIC)>();
@@ -82,8 +83,12 @@ namespace FaiseStock.Data.Repositories
             };
             await _context.TopUsers.AddAsync(topUser);
             await _context.SaveChangesAsync();
-            //CreateAt = DateOnly.FromDateTime(DateTime.Now)
 
+        }
+
+        public bool ClearRank()
+        {
+            return _context.Database.ExecuteSqlRaw("DELETE FROM top_user") > 0;
         }
     }
 }

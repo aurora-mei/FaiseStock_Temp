@@ -144,3 +144,5 @@ D:\rider_csharp-code\FaiseStock\FaiseStock.API\bin\Debug\net8.0\Quartz.Extension
 D:\rider_csharp-code\FaiseStock\FaiseStock.API\bin\Debug\net8.0\FaiseStock.Jobs.dll
 D:\rider_csharp-code\FaiseStock\FaiseStock.API\bin\Debug\net8.0\FaiseStock.Jobs.pdb
 D:\rider_csharp-code\FaiseStock\FaiseStock.API\obj\Debug\net8.0\FaiseStock.API.sourcelink.json
+D:\rider_csharp-code\FaiseStock\FaiseStock.API\bin\Debug\net8.0\FaiseStock.Middlewares.dll
+D:\rider_csharp-code\FaiseStock\FaiseStock.API\bin\Debug\net8.0\FaiseStock.Middlewares.pdb

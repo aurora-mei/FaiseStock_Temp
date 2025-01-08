@@ -15,5 +15,6 @@ namespace FaiseStock.Data.Repositories
         Task<List<TopUser>> GetRankAsync();
         Task GenerateRankAsync();
         Task<double> CalculateTotalDeposit(string user_id);
+        bool ClearRank();
     }
 }

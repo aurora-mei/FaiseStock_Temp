@@ -16,9 +16,16 @@ namespace FaiseStock.API.Services.Schedule
 
         public async Task Execute(IJobExecutionContext context)
         {
-            _logger.LogInformation("Generate Rank Job is running");
-            await _userRepository.GenerateRankAsync();
-            //return Task.CompletedTask;
+            try
+            {
+                _logger.LogInformation("Generate Rank Job is running");
+                await _userRepository.GenerateRankAsync();
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError("GENERATE RANK JOB EXCEPTION: " +ex.Message);
+                throw;
+            }
         }
     }
 }
