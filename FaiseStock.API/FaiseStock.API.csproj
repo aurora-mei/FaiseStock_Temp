@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FaiseStock.Data\FaiseStock.Data.csproj" />
     <ProjectReference Include="..\FaiseStock.Jobs\FaiseStock.Jobs.csproj" />
+    <ProjectReference Include="..\FaiseStock.Middlewares\FaiseStock.Middlewares.csproj" />
     <ProjectReference Include="..\FaiseStock.Utilities\FaiseStock.Utilities.csproj" />
   </ItemGroup>
 

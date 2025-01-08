@@ -1,32 +1,6 @@
 [
   {
     "ContainingType": "FaiseStock.API.Controllers.UserController",
-    "Method": "GetUsers",
-    "RelativePath": "api/User",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FaiseStock.API.Controllers.UserController",
-    "Method": "GetTotalDeposits",
-    "RelativePath": "api/User/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FaiseStock.API.Controllers.UserController",
     "Method": "GenerateRank",
     "RelativePath": "generateRank",
     "HttpMethod": "GET",
@@ -47,6 +21,16 @@
   },
   {
     "ContainingType": "FaiseStock.API.Controllers.UserController",
+    "Method": "ClearRank",
+    "RelativePath": "rank",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FaiseStock.API.Controllers.UserController",
     "Method": "GetRank",
     "RelativePath": "rank/{keydate}",
     "HttpMethod": "GET",
@@ -60,26 +44,5 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FaiseStock.API.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[FaiseStock.API.WeatherForecast, FaiseStock.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "GetWeatherForecast"
   }
 ]

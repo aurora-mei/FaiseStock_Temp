@@ -20,44 +20,9 @@ namespace FaiseStock.API.Controllers
             _logger = logger;
             _mapper = mapper;
         }
-
+    
         [HttpGet]
-        //[Authorize]
-        public async Task<IActionResult> GetUsers()
-        {
-            try
-            {
-                _logger.LogInformation("HELLO NE");
-                var regions = await _userRepository.GetAllAsync();//truy cập vào trực tiếp bảng regions trong dbcontext thông qua repository
-                return Ok(regions);
-
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                throw;
-            }
-
-
-        }
-        [HttpGet("{id}")]
-        //[Authorize]
-        public async Task<IActionResult> GetTotalDeposits([FromRoute] string id)
-        {
-            try
-            {
-                _logger.LogInformation("Get total ne");
-                var regions = await _userRepository.CalculateTotalDeposit(id);//truy cập vào trực tiếp bảng regions trong dbcontext thông qua repository
-                return Ok("lslls: "+regions);
-
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                throw;
-            }
-        }
-        [HttpGet("/generateRank")]
+        [Route("/generateRank")]
         //[Authorize]
         public async Task<IActionResult> GenerateRank()
         {
@@ -70,10 +35,12 @@ namespace FaiseStock.API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                throw;
+                throw new Exception("ERROR_AT_GENERATE_RANK");
             }
         }
-        [HttpGet("/rank")]
+        [HttpGet]
+        [Route("/rank")]
+
         //[Authorize]
         public async Task<IActionResult> GetRank()
         {
@@ -87,10 +54,11 @@ namespace FaiseStock.API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                throw;
+                throw new Exception("ERROR_AT_GET_RANK");
             }
         }
-        [HttpGet("/rank/{keydate}")]
+        [HttpGet]
+        [Route("/rank/{keydate}")]
         //[Authorize]
         public async Task<IActionResult> GetRank([FromRoute] string keydate)
         {
@@ -102,33 +70,32 @@ namespace FaiseStock.API.Controllers
                 {
                     return BadRequest("Invalid date format. Use 'yyyy-MM-dd'.");
                 }
-                var rankDomain = await _userRepository.GetRankAsync(parsedDate);//truy cập vào trực tiếp bảng regions trong dbcontext thông qua repository
+                var rankDomain = await _userRepository.GetRankAsync(parsedDate);
                 List<TopUserDto> rankDto = _mapper.Map<List<TopUserDto>>(rankDomain);
                 return Ok(rankDto);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                throw;
+                throw new Exception("ERROR_AT_GET_RANK_{KEYDATE}");
             }
         }
-        //[HttpGet("/rank")]
-        ////[Authorize]
-        //public async Task<IActionResult> GetRank()
-        //{
-        //    try
-        //    {
-        //        _logger.LogInformation("HELLO NE 2");
-        //        var regions = await _userRepository.GetRankAsync();//truy cập vào trực tiếp bảng regions trong dbcontext thông qua repository
-        //        return Ok(regions);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(ex.Message);
-        //        throw;
-        //    }
-
-
-        //}
+        [HttpDelete]
+        [Route("/rank")]
+        //[Authorize]
+        public IActionResult ClearRank()
+        {
+            try
+            {
+                _logger.LogInformation("clear rank ne");
+                var success =  _userRepository.ClearRank();
+                return success? Ok("Clear successful"):BadRequest("No hope to clear");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new Exception("ERROR_AT_CLEAR_RANK");
+            }
+        }
     }
 }
