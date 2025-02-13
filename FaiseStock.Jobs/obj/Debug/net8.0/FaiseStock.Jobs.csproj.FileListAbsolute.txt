@@ -14,3 +14,5 @@ D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\obj\Debug\net8.0\refint\FaiseSto
 D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\obj\Debug\net8.0\FaiseStock.Jobs.pdb
 D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\obj\Debug\net8.0\ref\FaiseStock.Jobs.dll
 D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\obj\Debug\net8.0\FaiseStock.Jobs.sourcelink.json
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\bin\Debug\net8.0\FaiseStock.Utilities.dll
+D:\rider_csharp-code\FaiseStock\FaiseStock.Jobs\bin\Debug\net8.0\FaiseStock.Utilities.pdb

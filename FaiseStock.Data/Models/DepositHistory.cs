@@ -10,6 +10,7 @@ public partial class DepositHistory
     public string UserId { get; set; } = null!;
 
     public double Amount { get; set; }
+    public DateTime CreateAt { get; set; }
 
     public virtual User User { get; set; } = null!;
 }

@@ -14,4 +14,6 @@ public partial class User
     public virtual ICollection<TopUser> TopUsers { get; set; } = new List<TopUser>();
 
     public virtual ICollection<Wallet> Wallets { get; set; } = new List<Wallet>();
+    public virtual ICollection<ContestParticipant> ContestParticipants { get; set; } = new List<ContestParticipant>();
+
 }

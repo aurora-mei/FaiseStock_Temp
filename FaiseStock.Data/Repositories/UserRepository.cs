@@ -1,15 +1,12 @@
 ﻿using FaiseStock.Data.Models;
-using FaiseStock.Data.Models.Dtos;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace FaiseStock.Data.Repositories
-
 {
     public class UserRepository : IUserRepository
     {
@@ -18,77 +15,25 @@ namespace FaiseStock.Data.Repositories
         {
             _context = context;
         }
-        public async Task<List<User>> GetAllAsync()
-        {
-            return await _context.Users.ToListAsync();
-        }
-        public async Task<List<TopUser>> GetRankAsync(DateOnly keydate)
-        {
-            return await _context.TopUsers.Include(x => x.User).Where(x => x.CreateAt.Day.Equals(keydate.Day)).OrderBy(x => x.Rank).ToListAsync();
-        }
-        public async Task<List<TopUser>> GetRankAsync()
-        {
-            return await _context.TopUsers.Include(x=>x.User).OrderBy(x => x.Rank).ToListAsync();
-        }
-        public async Task GenerateRankAsync()
-        {
-            //ClearRank();
-            var list = await _context.Wallets.Include(x => x.User).ThenInclude(x => x.DepositHistories).ToListAsync();
 
-            var result = new List<(string UserId, double IncreasedAmount, double ROIC)>();
-
-            foreach (var u in list)
-            {
-                double totalDeposit = await CalculateTotalDeposit(u.UserId);
-                double increasedAmount = CalculateIncreasedAmount(u.Balance, totalDeposit);
-                double ROIC = CalculateROIC(u.Balance, increasedAmount);
-
-                result.Add((u.UserId, increasedAmount, ROIC));
-            }
-            var topUsers = result.OrderByDescending(x => x.IncreasedAmount)
-                       .Take(10)
-                       .ToList();
-
-            int i = 1;
-            foreach (var item in topUsers)
-            {
-              await AddTopUser(item.UserId, item.IncreasedAmount, item.ROIC, i++);
-            }
-        }
-
-
-        public async Task<double> CalculateTotalDeposit(string user_id)
+        public async Task<Wallet> UpdateBalanceAsync(Wallet wallet)
         {
-            var user = await _context.Users.Include(x=>x.DepositHistories).FirstOrDefaultAsync(x => x.UserId == user_id);
-            var sum = user.DepositHistories.Sum(x => x.Amount);
-            return sum;
-        }
-        public double CalculateIncreasedAmount(double balance, double totalDeposit)
-        {
-            return balance - totalDeposit;
-        }
-        public double CalculateROIC(double balance, double increasedAmount)
-        {
-            return increasedAmount / balance * 100;
-        }
-        public async Task AddTopUser(string user_id, double increasedAmount, double ROIC, int rank)
-        {
-            var topUser = new TopUser()
-            {
-                UserId = user_id,
-                Rank = rank,
-                IncreasedAmount = increasedAmount,
-                Roic = ROIC,
-                CreateAt = DateOnly.FromDateTime(DateTime.Now)
-            };
-            await _context.TopUsers.AddAsync(topUser);
+            Wallet oldWallet = _context.Wallets.Include(x=>x.User).FirstOrDefault(w => w.UserId == wallet.UserId)??throw new Exception("No wallet found");
+            oldWallet.Balance = wallet.Balance;
+            _context.Wallets.Update(oldWallet);
             await _context.SaveChangesAsync();
-
+            return await _context.Wallets.FirstOrDefaultAsync(x=>x.WalletId==oldWallet.WalletId)??throw new Exception("No wallet found");
         }
-
-        public bool ClearRank()
+        public async Task<ContestParticipant> AddContestParticipant(ContestParticipant contestParticipant)
         {
-            return _context.Database.ExecuteSqlRaw("DELETE FROM top_user") > 0;
+            Contest contest = await _context.Contests.FirstOrDefaultAsync(x=>x.ContestId == contestParticipant.ContestId)??throw new Exception("No contest found");
+            if (contest.StartDateTime < DateTime.Now)
+            {
+                throw new ArgumentException("Registration deadline has passed.");
+            }
+            await _context.AddAsync(contestParticipant);
+            await _context.SaveChangesAsync();
+            return await _context.ContestParticipants.Include(x=>x.User).Include(x=>x.Contest).FirstOrDefaultAsync(x=>x.UserId == contestParticipant.UserId && x.ContestId==contestParticipant.ContestId);
         }
     }
 }

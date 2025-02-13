@@ -16,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FaiseStock.Utilities", "Fai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FaiseStock.Jobs", "FaiseStock.Jobs\FaiseStock.Jobs.csproj", "{034B4BE8-DDD6-4F8F-B55E-4A352F46003F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaiseStock.Middlewares", "FaiseStock.Middlewares\FaiseStock.Middlewares.csproj", "{96947749-9BDA-4E8B-8024-7129BF8125A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FaiseStock.Middlewares", "FaiseStock.Middlewares\FaiseStock.Middlewares.csproj", "{96947749-9BDA-4E8B-8024-7129BF8125A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

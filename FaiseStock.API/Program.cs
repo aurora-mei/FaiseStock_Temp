@@ -1,5 +1,3 @@
-
-using FaiseStock.API.Services.Schedule;
 using FaiseStock.Data;
 using FaiseStock.Data.Models;
 using FaiseStock.Data.Repositories;
@@ -10,6 +8,10 @@ using Quartz.Spi;
 using Quartz;
 using FaiseStock.Jobs;
 using FaiseStock.Middlewares;
+using FaiseStock.API.Services;
+using FaiseStock.j;
+using FaiseStock.Utilities.Converters;
+using FaiseStock.Jobs.Jobs;
 
 namespace FaiseStock.API
 {
@@ -31,23 +33,6 @@ namespace FaiseStock.API
             builder.Services.AddQuartz(q =>
             {
                 q.UseMicrosoftDependencyInjectionJobFactory();
-
-                var cronExpression = builder.Configuration.GetSection("TimeInterval:GenerateRankJob").Value;
-                var jobKey = new JobKey("GenerateRankJob");
-                q.AddJob<GenerateRankJob>(opts => opts.WithIdentity(jobKey));
-                q.AddTrigger(opts => opts
-                    .ForJob(jobKey)
-                    .WithIdentity("GenerateRankJob-trigger")
-                    .WithCronSchedule(cronExpression!)
-                );
-
-                var jobKey2 = new JobKey("DemoJob");
-                q.AddJob<DemoJob>(opts => opts.WithIdentity(jobKey2));
-                q.AddTrigger(opts => opts
-                    .ForJob(jobKey2)
-                    .WithIdentity("DemoJob-trigger")
-                    .WithCronSchedule(cronExpression!)
-                );
             });
             builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);  // Background service for Quartz
             //cors configure
@@ -62,7 +47,15 @@ namespace FaiseStock.API
             });
 
             builder.Services.AddTransient<FaiseStockDemoDbContext>();
+            builder.Services.AddTransient<IRankRepository, RankRepository>();
+            builder.Services.AddTransient<IAdminReposity, AdminRepository>();
             builder.Services.AddTransient<IUserRepository, UserRepository>();
+            builder.Services.AddTransient<IAdminService, AdminService>();
+            builder.Services.AddTransient<IRankService, RankService>();
+            builder.Services.AddTransient<IConfigService, ConfigService>();
+            builder.Services.AddTransient<IConvertCronExpression, ConvertCronExpression>();
+            
+
 
             var app = builder.Build();
 

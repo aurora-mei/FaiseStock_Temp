@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FaiseStock.Jobs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c5bc875ec2b4e9c266584ba0691e2157b1ed08ac")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b86b5d3f0d425c5eb38a25b9bf30444f614cbb9f")]
 [assembly: System.Reflection.AssemblyProductAttribute("FaiseStock.Jobs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FaiseStock.Jobs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
