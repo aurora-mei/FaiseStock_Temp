@@ -10,7 +10,7 @@ namespace FaiseStock.Data.Models.Dtos
     {
         public string UserId { get; set; } = null!;
 
-        public DateOnly CreateAt { get; set; }
+        public DateTime CreateAt { get; set; }
 
         public int Rank { get; set; }
 
@@ -18,6 +18,7 @@ namespace FaiseStock.Data.Models.Dtos
 
         public double Roic { get; set; }
         public string UserName { get; set; } = null!;
+        public string ContestName { get; set; } = null!;
 
     }
 }

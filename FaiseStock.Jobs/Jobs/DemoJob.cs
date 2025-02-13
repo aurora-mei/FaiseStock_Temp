@@ -1,5 +1,4 @@
-﻿using FaiseStock.API.Services.Schedule;
-using FaiseStock.Data.Repositories;
+﻿using FaiseStock.Data.Repositories;
 using Microsoft.Extensions.Logging;
 using Quartz;
 using System;
@@ -8,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FaiseStock.Jobs
+namespace FaiseStock.Jobs.Jobs
 {
     public class DemoJob : IJob
     {
         private readonly ILogger<GenerateRankJob> _logger;
-        public DemoJob(IUserRepository userRepository, ILogger<GenerateRankJob> logger)
+        public DemoJob(IRankRepository userRepository, ILogger<GenerateRankJob> logger)
         {
             _logger = logger;
         }
@@ -23,6 +22,6 @@ namespace FaiseStock.Jobs
             _logger.LogInformation("Demo Job is running");
             return Task.CompletedTask;
         }
-      
+
     }
 }

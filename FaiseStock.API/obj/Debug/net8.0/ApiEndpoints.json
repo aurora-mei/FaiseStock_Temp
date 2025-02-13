@@ -1,6 +1,53 @@
 [
   {
-    "ContainingType": "FaiseStock.API.Controllers.UserController",
+    "ContainingType": "FaiseStock.API.Controllers.AdminController",
+    "Method": "CreateContest",
+    "RelativePath": "create-contest",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "StartDateTime",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "EndDateTime",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContestName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FaiseStock.API.Controllers.DepositController",
+    "Method": "CreateDeposit",
+    "RelativePath": "create-deposit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Amount",
+        "Type": "System.Double",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FaiseStock.API.Controllers.RankController",
     "Method": "GenerateRank",
     "RelativePath": "generateRank",
     "HttpMethod": "GET",
@@ -10,7 +57,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FaiseStock.API.Controllers.UserController",
+    "ContainingType": "FaiseStock.API.Controllers.RankController",
     "Method": "GetRank",
     "RelativePath": "rank",
     "HttpMethod": "GET",
@@ -20,7 +67,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FaiseStock.API.Controllers.UserController",
+    "ContainingType": "FaiseStock.API.Controllers.RankController",
     "Method": "ClearRank",
     "RelativePath": "rank",
     "HttpMethod": "DELETE",
@@ -30,7 +77,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FaiseStock.API.Controllers.UserController",
+    "ContainingType": "FaiseStock.API.Controllers.RankController",
     "Method": "GetRank",
     "RelativePath": "rank/{keydate}",
     "HttpMethod": "GET",

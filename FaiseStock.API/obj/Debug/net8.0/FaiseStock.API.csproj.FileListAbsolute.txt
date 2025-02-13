@@ -146,3 +146,7 @@ D:\rider_csharp-code\FaiseStock\FaiseStock.API\bin\Debug\net8.0\FaiseStock.Jobs.
 D:\rider_csharp-code\FaiseStock\FaiseStock.API\obj\Debug\net8.0\FaiseStock.API.sourcelink.json
 D:\rider_csharp-code\FaiseStock\FaiseStock.API\bin\Debug\net8.0\FaiseStock.Middlewares.dll
 D:\rider_csharp-code\FaiseStock\FaiseStock.API\bin\Debug\net8.0\FaiseStock.Middlewares.pdb
+D:\rider_csharp-code\FaiseStock\FaiseStock.API\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\rider_csharp-code\FaiseStock\FaiseStock.API\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\rider_csharp-code\FaiseStock\FaiseStock.API\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+D:\rider_csharp-code\FaiseStock\FaiseStock.API\bin\Debug\net8.0\Newtonsoft.Json.dll

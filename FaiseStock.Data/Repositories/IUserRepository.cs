@@ -1,5 +1,4 @@
 ﻿using FaiseStock.Data.Models;
-using FaiseStock.Data.Models.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +9,7 @@ namespace FaiseStock.Data.Repositories
 {
     public interface IUserRepository
     {
-        Task<List<User>> GetAllAsync();
-        Task<List<TopUser>> GetRankAsync(DateOnly keydate);
-        Task<List<TopUser>> GetRankAsync();
-        Task GenerateRankAsync();
-        Task<double> CalculateTotalDeposit(string user_id);
-        bool ClearRank();
+        public Task<ContestParticipant> AddContestParticipant(ContestParticipant contestParticipant);
+        public Task<Wallet> UpdateBalanceAsync(Wallet wallet);
     }
 }
