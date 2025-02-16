@@ -8,17 +8,16 @@ namespace FaiseStock.Data.Models.Dtos
 {
     public class TopUserDto
     {
-        public string UserId { get; set; } = null!;
+        public string userId { get; set; } = null!;
 
-        public DateTime CreateAt { get; set; }
+        public DateTime  createAt { get; set; }
 
-        public int Rank { get; set; }
+        public int rank { get; set; }
 
-        public double IncreasedAmount { get; set; }
+        public double increasedAmount { get; set; }
 
-        public double Roic { get; set; }
-        public string UserName { get; set; } = null!;
-        public string ContestName { get; set; } = null!;
+        public double roic { get; set; }
+        public string contestName { get; set; } = null!;
 
     }
 }

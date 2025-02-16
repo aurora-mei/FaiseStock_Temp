@@ -34,127 +34,126 @@ public partial class FaiseStockDemoDbContext : DbContext
         => optionsBuilder.UseMySql(_configuration.GetConnectionString("FaiseStock_DB"), Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder
+        .UseCollation("utf8mb4_0900_ai_ci")
+        .HasCharSet("utf8mb4");
+
+    modelBuilder.Entity<DepositHistory>(entity =>
     {
-        modelBuilder
-            .UseCollation("utf8mb4_0900_ai_ci")
-            .HasCharSet("utf8mb4");
+        entity.HasKey(e => e.depositId).HasName("PRIMARY");
 
-        modelBuilder.Entity<DepositHistory>(entity =>
-        {
-            entity.HasKey(e => e.DepositId).HasName("PRIMARY");
+        entity.ToTable("deposit_history");
 
-            entity.ToTable("deposit_history");
+        entity.HasIndex(e => e.userId, "deposit_history_user_id_foreign");
 
-            entity.HasIndex(e => e.UserId, "deposit_history_user_id_foreign");
+        entity.Property(e => e.depositId).HasColumnName("deposit_id");
+        entity.Property(e => e.amount).HasColumnName("amount");
+        entity.Property(e => e.userId).HasColumnName("user_id");
+        entity.Property(e => e.createAt).HasColumnName("create_at");
 
-            entity.Property(e => e.DepositId).HasColumnName("deposit_id");
-            entity.Property(e => e.Amount).HasColumnName("amount");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-            entity.Property(e => e.CreateAt).HasColumnName("create_at");
+        entity.HasOne(d => d.user).WithMany(p => p.depositHistories)
+            .HasForeignKey(d => d.userId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("deposit_history_user_id_foreign");
+    });
 
-            entity.HasOne(d => d.User).WithMany(p => p.DepositHistories)
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("deposit_history_user_id_foreign");
-        });
+    modelBuilder.Entity<TopUser>(entity =>
+    {
+        entity.HasKey(e => new { e.userId, e.createAt })
+            .HasName("PRIMARY");
 
-        modelBuilder.Entity<TopUser>(entity =>
-        {
-            entity.HasKey(e => new { e.UserId, e.CreateAt })
-                .HasName("PRIMARY");
+        entity.ToTable("top_user");
 
-            entity.ToTable("top_user");
+        entity.Property(e => e.userId).HasColumnName("user_id");
+        entity.Property(e => e.contestId).HasColumnName("contest_id");
+        entity.Property(e => e.createAt).HasColumnName("create_at");
+        entity.Property(e => e.increasedAmount).HasColumnName("increased_amount");
+        entity.Property(e => e.rank).HasColumnName("rank");
+        entity.Property(e => e.roic).HasColumnName("ROIC");
 
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-            entity.Property(e => e.ContestId).HasColumnName("contest_id");
-            entity.Property(e => e.CreateAt).HasColumnName("create_at");
-            entity.Property(e => e.IncreasedAmount).HasColumnName("increased_amount");
-            entity.Property(e => e.Rank).HasColumnName("rank");
-            entity.Property(e => e.Roic).HasColumnName("ROIC");
+        entity.HasOne(d => d.contest)
+            .WithMany(p => p.topUsers)
+            .HasForeignKey(d => d.contestId)
+            .OnDelete(DeleteBehavior.Cascade) 
+            .HasConstraintName("top_user_contest_id_foreign");
 
-            entity.HasOne(d => d.Contest)
-                .WithMany(p => p.TopUsers)
-                .HasForeignKey(d => d.ContestId)
-                .OnDelete(DeleteBehavior.Cascade) 
-                .HasConstraintName("top_user_contest_id_foreign");
-            
-            entity.HasOne(d => d.User)
-                .WithMany(p => p.TopUsers)
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("top_user_user_id_foreign");
+        entity.HasOne(d => d.user)
+            .WithMany(p => p.topUsers)
+            .HasForeignKey(d => d.userId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("top_user_user_id_foreign");
+    });
 
-        });
+    modelBuilder.Entity<User>(entity =>
+    {
+        entity.HasKey(e => e.userId).HasName("PRIMARY");
 
-        
+        entity.ToTable("user");
 
-        modelBuilder.Entity<User>(entity =>
-        {
-            entity.HasKey(e => e.UserId).HasName("PRIMARY");
+        entity.Property(e => e.userId).HasColumnName("user_id");
+        entity.Property(e => e.name)
+            .HasMaxLength(255)
+            .HasColumnName("name");
+    });
 
-            entity.ToTable("user");
+    modelBuilder.Entity<Wallet>(entity =>
+    {
+        entity.HasKey(e => e.walletId).HasName("PRIMARY");
 
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-            entity.Property(e => e.Name)
-                .HasMaxLength(255)
-                .HasColumnName("name");
-        });
+        entity.ToTable("wallet");
 
-        modelBuilder.Entity<Wallet>(entity =>
-        {
-            entity.HasKey(e => e.WalletId).HasName("PRIMARY");
+        entity.HasIndex(e => e.userId, "wallet_user_id_foreign");
 
-            entity.ToTable("wallet");
+        entity.Property(e => e.walletId).HasColumnName("wallet_id");
+        entity.Property(e => e.balance).HasColumnName("balance");
+        entity.Property(e => e.userId).HasColumnName("user_id");
 
-            entity.HasIndex(e => e.UserId, "wallet_user_id_foreign");
+        entity.HasOne(d => d.user).WithMany(p => p.wallets)
+            .HasForeignKey(d => d.userId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("wallet_user_id_foreign");
+    });
 
-            entity.Property(e => e.WalletId).HasColumnName("wallet_id");
-            entity.Property(e => e.Balance).HasColumnName("balance");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
+    modelBuilder.Entity<Contest>(entity =>
+    {
+        entity.HasKey(e => e.contestId).HasName("PRIMARY");
 
-            entity.HasOne(d => d.User).WithMany(p => p.Wallets)
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("wallet_user_id_foreign");
-        });
-        modelBuilder.Entity<Contest>(entity =>
-        {
-            entity.HasKey(e => e.ContestId).HasName("PRIMARY");
+        entity.ToTable("contest");
 
-            entity.ToTable("contest");
-            entity.Property(e => e.ContestId).HasColumnName("contest_id");
-            entity.Property(e => e.ContestName).HasColumnName("contest_name");
-            entity.Property(e => e.StartDateTime).HasColumnName("start_date_time");
-            entity.Property(e => e.EndDateTime).HasColumnName("end_date_time");
+        entity.Property(e => e.contestId).HasColumnName("contest_id");
+        entity.Property(e => e.contestName).HasColumnName("contest_name");
+        entity.Property(e => e.startDateTime).HasColumnName("start_date_time");
+        entity.Property(e => e.endDateTime).HasColumnName("end_date_time");
+    });
 
-        });
-        modelBuilder.Entity<ContestParticipant>(entity =>
-        {
-            entity.HasKey(e => new { e.ContestId, e.UserId }).HasName("PRIMARY");
+    modelBuilder.Entity<ContestParticipant>(entity =>
+    {
+        entity.HasKey(e => new { e.contestId, e.userId }).HasName("PRIMARY");
 
-            entity.ToTable("contest_participants");
+        entity.ToTable("contest_participants");
 
-            entity.Property(e => e.ContestId).HasColumnName("contest_id");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-            entity.Property(e => e.InitialBalance).HasColumnName("initial_balance");
-            entity.Property(e => e.FinalBalance).HasColumnName("final_balance");
+        entity.Property(e => e.contestId).HasColumnName("contest_id");
+        entity.Property(e => e.userId).HasColumnName("user_id");
+        entity.Property(e => e.initialBalance).HasColumnName("initial_balance");
+        entity.Property(e => e.finalBalance).HasColumnName("final_balance");
 
-            entity.HasOne(d => d.Contest)
-                .WithMany(p => p.ContestParticipants)
-                .HasForeignKey(d => d.ContestId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("contest_participants_contest_id_foreign");
+        entity.HasOne(d => d.contest)
+            .WithMany(p => p.contestParticipants)
+            .HasForeignKey(d => d.contestId)
+            .OnDelete(DeleteBehavior.Cascade)
+            .HasConstraintName("contest_participants_contest_id_foreign");
 
-            entity.HasOne(d => d.User)
-                .WithMany(p => p.ContestParticipants)
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("contest_participants_user_id_foreign");
-        });
+        entity.HasOne(d => d.user)
+            .WithMany(p => p.contestParticipants)
+            .HasForeignKey(d => d.userId)
+            .OnDelete(DeleteBehavior.Cascade)
+            .HasConstraintName("contest_participants_user_id_foreign");
+    });
 
+    OnModelCreatingPartial(modelBuilder);
+}
 
-        OnModelCreatingPartial(modelBuilder);
-    }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

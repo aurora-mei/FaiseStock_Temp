@@ -5,15 +5,15 @@ namespace FaiseStock.Data.Models;
 
 public partial class User
 {
-    public string UserId { get; set; } = null!;
+    public string userId { get; set; } = null!;
 
-    public string Name { get; set; } = null!;
+    public string name { get; set; } = null!;
 
-    public virtual ICollection<DepositHistory> DepositHistories { get; set; } = new List<DepositHistory>();
+    public virtual ICollection<DepositHistory> depositHistories { get; set; } = new List<DepositHistory>();
 
-    public virtual ICollection<TopUser> TopUsers { get; set; } = new List<TopUser>();
+    public virtual ICollection<TopUser> topUsers { get; set; } = new List<TopUser>();
 
-    public virtual ICollection<Wallet> Wallets { get; set; } = new List<Wallet>();
-    public virtual ICollection<ContestParticipant> ContestParticipants { get; set; } = new List<ContestParticipant>();
+    public virtual ICollection<Wallet> wallets { get; set; } = new List<Wallet>();
+    public virtual ICollection<ContestParticipant> contestParticipants { get; set; } = new List<ContestParticipant>();
 
 }

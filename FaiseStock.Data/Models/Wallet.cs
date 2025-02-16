@@ -5,11 +5,11 @@ namespace FaiseStock.Data.Models;
 
 public partial class Wallet
 {
-    public string WalletId { get; set; } = null!;
+    public string walletId { get; set; } = null!;
 
-    public double Balance { get; set; }
+    public double balance { get; set; }
 
-    public string UserId { get; set; } = null!;
+    public string userId { get; set; } = null!;
 
-    public virtual User User { get; set; } = null!;
+    public virtual User user { get; set; } = null!;
 }

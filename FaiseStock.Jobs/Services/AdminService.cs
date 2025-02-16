@@ -21,8 +21,8 @@ namespace FaiseStock.API.Services
         public async Task<Contest> CreateContestAsync(Contest contest)
         {
             await _adminReposity.CreateContestAsync(contest);
-            _configService.CreateLaunchContestJobSchedule(_convertCronExpression.convertToCronExpression(contest.StartDateTime));
-            _configService.CreateGenerateRankJobSchedule(_convertCronExpression.convertToCronExpression(contest.EndDateTime));
+            _configService.CreateLaunchContestJobSchedule(_convertCronExpression.convertToCronExpression(contest.startDateTime));
+            _configService.CreateGenerateRankJobSchedule(_convertCronExpression.convertToCronExpression(contest.endDateTime));
             return contest;
         }
     }

@@ -18,15 +18,15 @@ namespace FaiseStock.Data.Repositories
 
         public async Task<List<ContestParticipant>> GetContestParticipantsAsync(string contestId)
         {
-            return _context.ContestParticipants.Include(x=>x.Contest)
-                .Include(x=>x.User).Where(c => c.ContestId == contestId).ToList();
+            return _context.ContestParticipants.Include(x=>x.contest)
+                .Where(c => c.contestId == contestId).ToList();
         }
         public async Task<Contest> CreateContestAsync(Contest contest)
         {
-            contest.ContestId = Guid.NewGuid().ToString();
+            contest.contestId = Guid.NewGuid().ToString();
             await _context.Contests.AddAsync(contest);
             await _context.SaveChangesAsync();
-            return await _context.Contests.FindAsync(contest.ContestId);
+            return await _context.Contests.FindAsync(contest.contestId);
         }
 
 

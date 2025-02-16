@@ -8,8 +8,8 @@ namespace FaiseStock.Data.Models.Dtos
 {
     public class ContestDto
     {
-        public DateTime StartDateTime { get; set; }
-        public DateTime EndDateTime { get; set; }
-        public string ContestName { get; set; }
+        public DateTime startDateTime { get; set; }
+        public DateTime endDateTime { get; set; }
+        public string contestName { get; set; }
     }
 }

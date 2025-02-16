@@ -2,9 +2,9 @@ namespace FaiseStock.Data.Models.ViewModels;
 
 public class WalletVM
 {
-    public string WalletId { get; set; } = null!;
+    public string walletId { get; set; } = null!;
 
-    public double Balance { get; set; }
+    public double balance { get; set; }
 
-    public string UserName { get; set; } = null!;
+    public string userName { get; set; } = null!;
 }

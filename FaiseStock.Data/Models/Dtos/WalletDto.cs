@@ -8,9 +8,9 @@ namespace FaiseStock.Data.Models.Dtos
 {
     public class WalletDto
     {
-        public string UserId { get; set; } = null!;
+        public string userId { get; set; } = null!;
 
-        public double Balance { get; set; }
+        public double balance { get; set; }
 
     }
 }

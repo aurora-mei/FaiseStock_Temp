@@ -23,7 +23,7 @@ namespace FaiseStock.API.Controllers
         }
         [HttpPost]
         [Route("/update-balance")]
-        public async Task<ActionResult> UpdateBalance([FromForm] WalletDto walletDto)
+        public async Task<ActionResult> UpdateBalance([FromBody] WalletDto walletDto)
         {
             _logger.LogInformation("CreateDeposit ne");
             Wallet walletDomain = await _userRepository.UpdateBalanceAsync(_mapper.Map<Wallet>(walletDto));
@@ -31,7 +31,7 @@ namespace FaiseStock.API.Controllers
         }
         [HttpPost]
         [Route("/register-contest")]
-        public async Task<ActionResult> RegisterContest([FromForm] ContestParticipantDto contestParticipantDto)
+        public async Task<ActionResult> RegisterContest([FromBody] ContestParticipantDto contestParticipantDto)
         {
             _logger.LogInformation("RegisterContest ne");
             ContestParticipant contestParticipant = await _userRepository.AddContestParticipant(_mapper.Map<ContestParticipant>(contestParticipantDto));
