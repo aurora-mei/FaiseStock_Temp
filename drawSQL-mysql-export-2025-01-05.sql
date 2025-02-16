@@ -32,6 +32,17 @@ CREATE TABLE `deposit_history` (
     CONSTRAINT `deposit_history_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`)
 );
 
+CREATE TABLE contest_participants (
+    contest_id VARCHAR(255) NOT NULL,
+    user_id VARCHAR(255) NOT NULL,
+    initial_balance DOUBLE NOT NULL,
+    final_balance DOUBLE NULL,
+    PRIMARY KEY (contest_id, user_id),
+    CONSTRAINT contest_participants_contest_id_foreign FOREIGN KEY (contest_id) REFERENCES contest(contest_id) ON DELETE CASCADE,
+    CONSTRAINT contest_participants_user_id_foreign FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE
+);
+
+
 CREATE TABLE `top_user` (
     `user_id` VARCHAR(255) NOT NULL,
      `contest_id` VARCHAR(255) NOT NULL,
@@ -43,6 +54,7 @@ CREATE TABLE `top_user` (
     CONSTRAINT `top_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`),
      CONSTRAINT `top_user_contest_id_foreign` FOREIGN KEY (`contest_id`) REFERENCES `contest`(`contest_id`)
 );
+
 
 -- Insert data into user table
 INSERT INTO `user` (`user_id`, `name`) VALUES 
