@@ -29,7 +29,7 @@ namespace FaiseStock.API.Controllers
         [HttpPost]
         [Route("/create-contest")]
         //[Authorize]
-        public async Task<IActionResult> CreateContest([FromForm] ContestDto contestDto)//create contest
+        public async Task<IActionResult> CreateContest([FromBody] ContestDto contestDto)//create contest
         {
             try
             {

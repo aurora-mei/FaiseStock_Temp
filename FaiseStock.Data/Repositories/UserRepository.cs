@@ -18,22 +18,22 @@ namespace FaiseStock.Data.Repositories
 
         public async Task<Wallet> UpdateBalanceAsync(Wallet wallet)
         {
-            Wallet oldWallet = _context.Wallets.Include(x=>x.User).FirstOrDefault(w => w.UserId == wallet.UserId)??throw new Exception("No wallet found");
-            oldWallet.Balance = wallet.Balance;
+            Wallet oldWallet = _context.Wallets.Include(x=>x.user).FirstOrDefault(w => w.userId == wallet.userId)??throw new Exception("No wallet found");
+            oldWallet.balance = wallet.balance;
             _context.Wallets.Update(oldWallet);
             await _context.SaveChangesAsync();
-            return await _context.Wallets.FirstOrDefaultAsync(x=>x.WalletId==oldWallet.WalletId)??throw new Exception("No wallet found");
+            return await _context.Wallets.FirstOrDefaultAsync(x=>x.walletId==oldWallet.walletId)??throw new Exception("No wallet found");
         }
         public async Task<ContestParticipant> AddContestParticipant(ContestParticipant contestParticipant)
         {
-            Contest contest = await _context.Contests.FirstOrDefaultAsync(x=>x.ContestId == contestParticipant.ContestId)??throw new Exception("No contest found");
-            if (contest.StartDateTime < DateTime.Now)
+            Contest contest = await _context.Contests.FirstOrDefaultAsync(x=>x.contestId == contestParticipant.contestId)??throw new Exception("No contest found");
+            if (contest.startDateTime < DateTime.Now)
             {
                 throw new ArgumentException("Registration deadline has passed.");
             }
             await _context.AddAsync(contestParticipant);
             await _context.SaveChangesAsync();
-            return await _context.ContestParticipants.Include(x=>x.User).Include(x=>x.Contest).FirstOrDefaultAsync(x=>x.UserId == contestParticipant.UserId && x.ContestId==contestParticipant.ContestId);
+            return await _context.ContestParticipants.Include(x=>x.user).Include(x=>x.contest).FirstOrDefaultAsync(x=>x.userId == contestParticipant.userId && x.contestId==contestParticipant.contestId);
         }
     }
 }

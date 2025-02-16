@@ -5,12 +5,12 @@ namespace FaiseStock.Data.Models;
 
 public partial class DepositHistory
 {
-    public string DepositId { get; set; } = null!;
+    public string depositId { get; set; } = null!;
 
-    public string UserId { get; set; } = null!;
+    public string userId { get; set; } = null!;
 
-    public double Amount { get; set; }
-    public DateTime CreateAt { get; set; }
+    public double amount { get; set; }
+    public DateTime createAt { get; set; }
 
-    public virtual User User { get; set; } = null!;
+    public virtual User user { get; set; } = null!;
 }

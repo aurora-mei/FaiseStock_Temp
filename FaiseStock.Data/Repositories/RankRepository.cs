@@ -21,23 +21,23 @@ namespace FaiseStock.Data.Repositories
 
         public async Task<List<TopUser>> GetRankByDateAsync(DateOnly keydate)
         {
-            return await _context.TopUsers.Include(x => x.User).ThenInclude(x=>x.DepositHistories).Where(x => DateOnly.FromDateTime(x.CreateAt) ==keydate).OrderBy(x => x.Rank).ToListAsync();
+            return await _context.TopUsers.Include(x => x.user).ThenInclude(x=>x.depositHistories).Where(x => DateOnly.FromDateTime(x.createAt) ==keydate).OrderBy(x => x.rank).ToListAsync();
         }
         public async Task<List<TopUser>> GetRankAsync()
         {
-            return await _context.TopUsers.Include(x=>x.User).OrderBy(x => x.Rank).ToListAsync();
+            return await _context.TopUsers.Include(x=>x.user).OrderBy(x => x.rank).ToListAsync();
         }
         public async  Task<List<TopUser>> GetRankByContestAsync(String contestId)
         {
-            return await _context.TopUsers.Include(x=>x.User).Include(x=>x.Contest).Where(x=>x.ContestId==contestId).OrderBy(x => x.Rank).ToListAsync();
+            return await _context.TopUsers.Include(x=>x.user).Include(x=>x.contest).Where(x=>x.contestId==contestId).OrderBy(x => x.rank).ToListAsync();
         }
       
         public async Task GenerateRankAsync(DateTime contestEndTime)
         {
-            Contest contest = await _context.Contests.FirstOrDefaultAsync(x =>x.EndDateTime == contestEndTime)??throw new Exception("No contest found");
+            Contest contest = await _context.Contests.FirstOrDefaultAsync(x =>x.endDateTime == contestEndTime)??throw new Exception("No contest found");
 
             //take participants & update final balance
-            List<ContestParticipant> participants = _context.ContestParticipants.Where(x=>x.ContestId == contest.ContestId).ToList();
+            List<ContestParticipant> participants = _context.ContestParticipants.Where(x=>x.contestId == contest.contestId).ToList();
             foreach (ContestParticipant participant in participants)
             {
                 await UpdateFinalBinance(participant);
@@ -48,9 +48,9 @@ namespace FaiseStock.Data.Repositories
         
             foreach (var u in participants)
             {
-                double increasedAmount = CalculateIncreasedAmount(u.FinalBalance??0, u.InitialBalance);
-                double ROIC = CalculateROIC(u.FinalBalance??0, increasedAmount);
-                result.Add((u.UserId, increasedAmount, ROIC));
+                double increasedAmount = CalculateIncreasedAmount(u.finalBalance??0, u.initialBalance);
+                double ROIC = CalculateROIC(u.finalBalance??0, increasedAmount);
+                result.Add((u.userId, increasedAmount, ROIC));
             }
         
             //add top 10 user to top_user table
@@ -61,29 +61,29 @@ namespace FaiseStock.Data.Repositories
             int i = 1;
             foreach (var item in topUsers)
             {
-              await AddTopUser(contest.ContestId,item.UserId, item.IncreasedAmount, item.ROIC, i++);
+              await AddTopUser(contest.contestId,item.UserId, item.IncreasedAmount, item.ROIC, i++);
             }
         }
 
         public async Task LaunchContestAsync(DateTime contestStartTime)
         {
-            Contest contest = await _context.Contests.Include(x=>x.ContestParticipants).FirstOrDefaultAsync(x =>x.StartDateTime == contestStartTime)??throw new Exception("No contest found");
-            foreach (var u in contest.ContestParticipants)
+            Contest contest = await _context.Contests.Include(x=>x.contestParticipants).FirstOrDefaultAsync(x =>x.startDateTime == contestStartTime)??throw new Exception("No contest found");
+            foreach (var u in contest.contestParticipants)
             {
                 await UpdateInitialBinance(u);
             }
         }
         public async Task UpdateInitialBinance(ContestParticipant contestParticipant)
         {
-            User u = await _context.Users.Include(x=>x.Wallets).FirstOrDefaultAsync(x=>x.UserId == contestParticipant.UserId)??throw new Exception("No user found");
-            contestParticipant.InitialBalance = u.Wallets.First().Balance;
+            User u = await _context.Users.Include(x=>x.wallets).FirstOrDefaultAsync(x=>x.userId == contestParticipant.userId)??throw new Exception("No user found");
+            contestParticipant.initialBalance = u.wallets.First().balance;
             _context.Update(contestParticipant);
             await _context.SaveChangesAsync();
         }
         public async Task UpdateFinalBinance(ContestParticipant contestParticipant)
         {
-            User u = await _context.Users.Include(x=>x.Wallets).FirstOrDefaultAsync(x=>x.UserId == contestParticipant.UserId)??throw new Exception("No user found");
-            contestParticipant.FinalBalance = u.Wallets.First().Balance;
+            User u = await _context.Users.Include(x=>x.wallets).FirstOrDefaultAsync(x=>x.userId == contestParticipant.userId)??throw new Exception("No user found");
+            contestParticipant.finalBalance = u.wallets.First().balance;
             _context.Update(contestParticipant);
             await _context.SaveChangesAsync();
         }
@@ -101,12 +101,12 @@ namespace FaiseStock.Data.Repositories
         {
             var topUser = new TopUser()
             {
-                UserId = user_id,
-                Rank = rank,
-                IncreasedAmount = increasedAmount,
-                Roic = ROIC,
-                CreateAt = DateTime.Now,
-                ContestId = contest_id
+                userId = user_id,
+                rank = rank,
+                increasedAmount = increasedAmount,
+                roic = ROIC,
+                createAt = DateTime.Now,
+                contestId = contest_id
             };
             await _context.TopUsers.AddAsync(topUser);
             await _context.SaveChangesAsync();
