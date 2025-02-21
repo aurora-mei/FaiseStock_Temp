@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FaiseStock.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UserController : Controller
     {
@@ -22,7 +22,7 @@ namespace FaiseStock.API.Controllers
             _logger = logger;
         }
         [HttpPost]
-        [Route("/update-balance")]
+        [Route("update-balance")]
         public async Task<ActionResult> UpdateBalance([FromBody] WalletDto walletDto)
         {
             _logger.LogInformation("CreateDeposit ne");
@@ -30,7 +30,7 @@ namespace FaiseStock.API.Controllers
             return Ok(_mapper.Map<WalletVM>(walletDomain));
         }
         [HttpPost]
-        [Route("/register-contest")]
+        [Route("register-contest")]
         public async Task<ActionResult> RegisterContest([FromBody] ContestParticipantDto contestParticipantDto)
         {
             _logger.LogInformation("RegisterContest ne");

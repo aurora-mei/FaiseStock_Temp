@@ -8,7 +8,7 @@ using System.Text.Json;
 
 namespace FaiseStock.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class RankController : Controller
     {
@@ -25,7 +25,7 @@ namespace FaiseStock.API.Controllers
         }
     
         [HttpGet]
-        [Route("/generateRank")]
+        [Route("generateRank")]
         //[Authorize]
         public async Task<IActionResult> GenerateRank()//will activate at end_date_time
         {
@@ -42,7 +42,7 @@ namespace FaiseStock.API.Controllers
             }
         }
         [HttpGet]
-        [Route("/all-rank")]
+        [Route("all-rank")]
 
         //[Authorize]
         public async Task<IActionResult> GetAllRank()
@@ -61,7 +61,7 @@ namespace FaiseStock.API.Controllers
             }
         }
         [HttpGet]
-        [Route("/rankDate/{keydate}")]
+        [Route("rankDate/{keydate}")]
         //[Authorize]
         public async Task<IActionResult> GetRankByDate([FromRoute] string keydate)
         {
@@ -85,7 +85,7 @@ namespace FaiseStock.API.Controllers
         }
         
         [HttpGet]
-        [Route("/rankContest/{contestId}")]
+        [Route("rankContest/{contestId}")]
         //[Authorize]
         public async Task<IActionResult> GetRankByContest([FromRoute] string contestId)
         {

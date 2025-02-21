@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FaiseStock.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class AdminController : Controller
     {
@@ -27,7 +27,7 @@ namespace FaiseStock.API.Controllers
         }
 
         [HttpPost]
-        [Route("/create-contest")]
+        [Route("create-contest")]
         //[Authorize]
         public async Task<IActionResult> CreateContest([FromBody] ContestDto contestDto)//create contest
         {
@@ -45,7 +45,7 @@ namespace FaiseStock.API.Controllers
             }
         }
         [HttpGet]
-        [Route("/get-contest-participants/{contestId}")]
+        [Route("get-contest-participants/{contestId}")]
         //[Authorize]
         public async Task<IActionResult> GetContestParticipants([FromRoute] string contestId)//create contest
         {
@@ -59,7 +59,43 @@ namespace FaiseStock.API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                throw new Exception("ERROR_AT_CreateContest");
+                throw new Exception("ERROR_AT_GetContestParticipants");
+            }
+        }
+        [HttpGet]
+        [Route("get-all-contest")]
+        //[Authorize]
+        public async Task<IActionResult> GetAllContest()//create contest
+        {
+            try
+            {
+                _logger.LogInformation("GetAllContest ne");
+                List<Contest> list =  await _adminReposity.GetAllContestAsync();
+                List<ContestVM> listVm = _mapper.Map< List<ContestVM>>(list);
+                return Ok(listVm);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new Exception("ERROR_AT_GetAllContest");
+            }
+        }
+        [HttpGet]
+        [Route("get-contest/{id}")]
+        //[Authorize]
+        public async Task<IActionResult> GetContestById(string id)//create contest
+        {
+            try
+            {
+                _logger.LogInformation("GetContestById ne");
+                Contest contest =  await _adminReposity.GetContestByIdAsync(id);
+                ContestVM contestVm = _mapper.Map< ContestVM>(contest);
+                return Ok(contestVm);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new Exception("ERROR_AT_GetContestById");
             }
         }
     }
