@@ -9,6 +9,8 @@ namespace FaiseStock.Data.Repositories
 {
     public interface IAdminReposity
     {
+        Task<Contest> GetContestByIdAsync(string id);
+        Task<List<Contest>> GetAllContestAsync();
         Task<Contest> CreateContestAsync(Contest contest);
         Task<List<ContestParticipant>> GetContestParticipantsAsync(string contestId);
     }

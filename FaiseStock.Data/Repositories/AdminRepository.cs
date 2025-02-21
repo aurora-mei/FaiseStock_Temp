@@ -15,7 +15,20 @@ namespace FaiseStock.Data.Repositories
         {
             _context = context;
         }
+        public async Task<List<Contest>> GetAllContestAsync()
+        {
+            return await _context.Contests.ToListAsync();
+        }
+        public async Task<Contest> GetContestByIdAsync(string id)
+        {
+            Contest contest = await _context.Contests.FindAsync(id);
+            if (contest == null)
+            {
+                throw new ArgumentNullException(nameof(contest));
+            }
 
+            return contest;
+        }
         public async Task<List<ContestParticipant>> GetContestParticipantsAsync(string contestId)
         {
             return _context.ContestParticipants.Include(x=>x.contest)
