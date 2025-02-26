@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FaiseStock.Utilities")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9a6ee4f8736d5c4780b19f0467029b5ce288b1ea")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f8349f1d08faa5532f0c9f07cab818cd4a8b9bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("FaiseStock.Utilities")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FaiseStock.Utilities")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

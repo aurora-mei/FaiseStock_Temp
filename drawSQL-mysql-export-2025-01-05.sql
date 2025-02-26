@@ -1,5 +1,11 @@
-Create database faisestockdemo_db;
-use faisestockdemo_db;
+Create database faisestock_db;
+use faisestock_db;
+
+CREATE TABLE `user` (
+    `user_id` VARCHAR(255) NOT NULL,
+    `name` VARCHAR(255) NOT NULL,
+    PRIMARY KEY(`user_id`)
+);
 
 CREATE TABLE `contest` (
     `contest_id` VARCHAR(255) NOT NULL,
@@ -15,12 +21,6 @@ CREATE TABLE `wallet` (
     `user_id` VARCHAR(255) NOT NULL,
     PRIMARY KEY(`wallet_id`),
     CONSTRAINT `wallet_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`)
-);
-
-CREATE TABLE `user` (
-    `user_id` VARCHAR(255) NOT NULL,
-    `name` VARCHAR(255) NOT NULL,
-    PRIMARY KEY(`user_id`)
 );
 
 CREATE TABLE `deposit_history` (

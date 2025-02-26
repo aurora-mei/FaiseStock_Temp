@@ -1,5 +1,6 @@
 .vs/
-note_steps.txt
+
+**/Migrations/
 # Common IntelliJ Platform excludes
 
 # User specific

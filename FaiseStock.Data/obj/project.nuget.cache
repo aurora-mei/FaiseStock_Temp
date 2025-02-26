@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zYvjrTQYxkA=",
+  "dgSpecHash": "LSw1aYi5rLI=",
   "success": true,
-  "projectFilePath": "D:\\rider_csharp-code\\Faisestock\\FaiseStock.Data\\FaiseStock.Data.csproj",
+  "projectFilePath": "D:\\rider_csharp-code\\FaiseStock\\FaiseStock.Data\\FaiseStock.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\THANH HUYEN\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\THANH HUYEN\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.3.0\\microsoft.aspnetcore.authentication.abstractions.2.3.0.nupkg.sha512",

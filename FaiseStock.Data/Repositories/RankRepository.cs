@@ -94,7 +94,7 @@ namespace FaiseStock.Data.Repositories
         }
         public double CalculateROIC(double balance, double increasedAmount)
         {
-            return increasedAmount / balance * 100;
+            return Math.Round(increasedAmount / balance * 100, 2);
         }
 
         public async Task AddTopUser(string contest_id,string user_id, double increasedAmount, double ROIC, int rank)

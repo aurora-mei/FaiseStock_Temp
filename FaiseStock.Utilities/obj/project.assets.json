@@ -3935,11 +3935,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\rider_csharp-code\\Faisestock\\FaiseStock.Utilities\\FaiseStock.Utilities.csproj",
+      "projectUniqueName": "D:\\rider_csharp-code\\FaiseStock\\FaiseStock.Utilities\\FaiseStock.Utilities.csproj",
       "projectName": "FaiseStock.Utilities",
-      "projectPath": "D:\\rider_csharp-code\\Faisestock\\FaiseStock.Utilities\\FaiseStock.Utilities.csproj",
+      "projectPath": "D:\\rider_csharp-code\\FaiseStock\\FaiseStock.Utilities\\FaiseStock.Utilities.csproj",
       "packagesPath": "C:\\Users\\THANH HUYEN\\.nuget\\packages\\",
-      "outputPath": "D:\\rider_csharp-code\\Faisestock\\FaiseStock.Utilities\\obj\\",
+      "outputPath": "D:\\rider_csharp-code\\FaiseStock\\FaiseStock.Utilities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3961,8 +3961,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\rider_csharp-code\\Faisestock\\FaiseStock.Data\\FaiseStock.Data.csproj": {
-              "projectPath": "D:\\rider_csharp-code\\Faisestock\\FaiseStock.Data\\FaiseStock.Data.csproj"
+            "D:\\rider_csharp-code\\FaiseStock\\FaiseStock.Data\\FaiseStock.Data.csproj": {
+              "projectPath": "D:\\rider_csharp-code\\FaiseStock\\FaiseStock.Data\\FaiseStock.Data.csproj"
             }
           }
         }
