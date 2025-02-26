@@ -1,6 +1,6 @@
 .vs/
 
-FaiseStock.Data/Migrations
+**/Migrations/
 # Common IntelliJ Platform excludes
 
 # User specific
