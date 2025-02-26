@@ -21,14 +21,7 @@ namespace FaiseStock.API.Controllers
             _mapper = mapper;
             _logger = logger;
         }
-        [HttpPost]
-        [Route("update-balance")]
-        public async Task<ActionResult> UpdateBalance([FromBody] WalletDto walletDto)
-        {
-            _logger.LogInformation("Do UpdateBalance");
-            Wallet walletDomain = await _userRepository.UpdateBalanceAsync(_mapper.Map<Wallet>(walletDto));
-            return Ok(_mapper.Map<WalletVM>(walletDomain));
-        }
+     
         [HttpGet]
         [Route("get-all-contest")]
         public async Task<IActionResult> GetAllContest()//create contest

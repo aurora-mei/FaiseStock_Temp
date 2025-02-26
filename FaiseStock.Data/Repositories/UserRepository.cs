@@ -17,15 +17,6 @@ namespace FaiseStock.Data.Repositories
             _context = context;
         }
 
-        public async Task<Wallet> UpdateBalanceAsync(Wallet wallet)
-        {
-            Wallet oldWallet = _context.Wallets.Include(x=>x.user).FirstOrDefault(w => w.userId == wallet.userId)??throw new Exception("No wallet found");
-            oldWallet.balance = wallet.balance;
-            _context.Wallets.Update(oldWallet);
-            await _context.SaveChangesAsync();
-            return await _context.Wallets.FirstOrDefaultAsync(x=>x.walletId==oldWallet.walletId)??throw new Exception("No wallet found");
-        }
-
         public async Task<List<Contest>> GetAllContestAsync()
         {
             return await _context.Contests.ToListAsync();
@@ -51,6 +42,11 @@ namespace FaiseStock.Data.Repositories
             if (contest.startDateTime < DateTime.Now)
             {
                 throw new ArgumentException("Registration deadline has passed.");
+            }
+            ContestParticipant existedParticipant = await _context.ContestParticipants.FirstOrDefaultAsync(x => x.userId == contestParticipant.userId && x.contestId == contestParticipant.contestId);
+            if (existedParticipant != null)
+            {
+                throw new ArgumentException("User already registered for this contest.");
             }
             await _context.ContestParticipants.AddAsync(contestParticipant);
             await _context.SaveChangesAsync();
