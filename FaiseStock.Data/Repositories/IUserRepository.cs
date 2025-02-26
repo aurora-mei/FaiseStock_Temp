@@ -9,7 +9,10 @@ namespace FaiseStock.Data.Repositories
 {
     public interface IUserRepository
     {
-        public Task<ContestParticipant> AddContestParticipant(ContestParticipant contestParticipant);
-        public Task<Wallet> UpdateBalanceAsync(Wallet wallet);
+        Task<Contest> GetContestByIdAsync(string id);
+        Task<List<Contest>> GetAllContestAsync();
+        Task<ContestParticipant> AddContestParticipant(ContestParticipant contestParticipant);
+        Task<Wallet> UpdateBalanceAsync(Wallet wallet);
+        Task<List<ContestParticipant>> GetContestParticipantsAsync(string contestId);
     }
 }

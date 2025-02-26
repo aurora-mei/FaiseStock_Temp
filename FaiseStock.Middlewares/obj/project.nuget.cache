@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Q/x+fiR6R0I=",
+  "dgSpecHash": "4/GBWfsZkaE=",
   "success": true,
-  "projectFilePath": "D:\\rider_csharp-code\\Faisestock\\FaiseStock.Middlewares\\FaiseStock.Middlewares.csproj",
+  "projectFilePath": "D:\\rider_csharp-code\\FaiseStock\\FaiseStock.Middlewares\\FaiseStock.Middlewares.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\THANH HUYEN\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.3.0\\microsoft.aspnetcore.authentication.abstractions.2.3.0.nupkg.sha512",
     "C:\\Users\\THANH HUYEN\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.3.0\\microsoft.aspnetcore.authentication.core.2.3.0.nupkg.sha512",

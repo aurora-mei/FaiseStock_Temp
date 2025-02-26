@@ -18,7 +18,7 @@ public class ConfigService: IConfigService
     public ConfigService(IConfiguration configuration,ISchedulerFactory schedulerFactory, ILogger<ConfigService> logger)
     {
         _configuration = configuration;
-        _configPath = "appsettings.json"; // Đường dẫn file cấu hình
+        _configPath = "appsettings.json"; 
         _schedulerFactory = schedulerFactory;
         _logger = logger;
     }
