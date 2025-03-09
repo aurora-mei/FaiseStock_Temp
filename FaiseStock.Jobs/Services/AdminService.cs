@@ -20,10 +20,22 @@ namespace FaiseStock.API.Services
         }
         public async Task<Contest> CreateContestAsync(Contest contest)
         {
-            await _adminReposity.CreateContestAsync(contest);
-            _configService.CreateLaunchContestJobSchedule(_convertCronExpression.convertToCronExpression(contest.startDateTime));
-            _configService.CreateGenerateRankJobSchedule(_convertCronExpression.convertToCronExpression(contest.endDateTime));
+            Contest savedContest = await _adminReposity.CreateContestAsync(contest);
+            _configService.CreateLaunchContestJobSchedule(_convertCronExpression.convertToCronExpression(savedContest.startDateTime));
+            _configService.CreateGenerateRankJobSchedule(_convertCronExpression.convertToCronExpression(savedContest.endDateTime));
             return contest;
+        }
+        public async Task<Contest> UpdateContestAsync(Contest updateContest)
+        {
+           Contest updatedContest =  await _adminReposity.UpdateContestAsync(updateContest);
+            _configService.CreateLaunchContestJobSchedule(_convertCronExpression.convertToCronExpression(updatedContest.startDateTime));
+            _configService.CreateGenerateRankJobSchedule(_convertCronExpression.convertToCronExpression(updatedContest.endDateTime));
+            return updatedContest;
+        }
+
+        public async Task<bool> DeleteContestAsync(string contestId)
+        {
+            return await _adminReposity.DeleteContestAsync(contestId);
         }
     }
 }

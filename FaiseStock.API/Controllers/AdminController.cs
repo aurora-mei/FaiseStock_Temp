@@ -34,7 +34,23 @@ namespace FaiseStock.API.Controllers
               ContestVM finalContestVm = _mapper.Map<ContestVM>(contest);
                return Ok(finalContestVm);
         }
-       
-     
+        [HttpPost]
+        [Route("update-contest")]
+        public async Task<IActionResult> UpdateContest([FromBody] ContestVM contestVm)
+        {
+            _logger.LogInformation("Do UpdateContest");
+            Contest contest = await _adminService.UpdateContestAsync(_mapper.Map<Contest>(contestVm));
+            ContestVM finalContestVm = _mapper.Map<ContestVM>(contest);
+            return Ok(finalContestVm);
+        }
+        [HttpPost]
+        [Route("delete-contest/{contestId}")]
+        public async Task<IActionResult> DeleteContest([FromRoute] string contestId)
+        {
+            _logger.LogInformation("Do DeleteContest");
+            bool res = await _adminService.DeleteContestAsync(contestId);
+            return Ok(new {res});
+        }
+
     }
 }
