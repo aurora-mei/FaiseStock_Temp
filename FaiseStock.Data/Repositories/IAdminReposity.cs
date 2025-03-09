@@ -11,6 +11,9 @@ namespace FaiseStock.Data.Repositories
     {
 
         Task<Contest> CreateContestAsync(Contest contest);
-        
+        Task<Contest> UpdateContestAsync(Contest updateContest);
+
+
+        Task<bool> DeleteContestAsync(string contestId);
     }
 }
