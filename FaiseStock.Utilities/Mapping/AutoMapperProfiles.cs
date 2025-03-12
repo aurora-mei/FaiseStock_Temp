@@ -20,7 +20,6 @@ namespace FaiseStock.Utilities.Mapping
             CreateMap<Contest, ContestVM>().ReverseMap();
             CreateMap<ContestParticipant, ContestParticipantDto>().ReverseMap();
             CreateMap<ContestParticipant, ContestParticipantVM>()
-                .ForMember(x => x.contestName, opt => opt.MapFrom(x => x.contest.contestName))
               .ReverseMap();
         }
     }
