@@ -8,7 +8,7 @@ using System.Text.Json;
 
 namespace FaiseStock.API.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/rank")]
     [ApiController]
     public class RankController : Controller
     {

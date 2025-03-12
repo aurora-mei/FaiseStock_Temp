@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FaiseStock.API.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/user")]
     [ApiController]
     public class UserController : Controller
     {
